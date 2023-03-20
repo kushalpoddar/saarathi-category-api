@@ -13,6 +13,8 @@ import numpy as np
 import cv2
 import requests # request img from web
 import shutil
+import sys
+import traceback
 
 app = Flask(__name__)
 CORS(app)
@@ -140,8 +142,10 @@ class Protein(Resource):
 			return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg", model1) }
 
 		except Exception as e:
-			print(e)
-			return "Some error occured", 400
+			app.logger.info("print exception", e)
+			print(e, file=sys.stderr)
+			print(traceback.format_exc(), file=sys.stderr)
+			return e, 400
 
 # api.add_resource(Asaview, '/classify')
 api.add_resource(Protein, '/classify')
