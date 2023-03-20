@@ -12,7 +12,7 @@ import torch
 import torch.utils.data as data
 from torch.autograd import Variable
 import numpy as np
-import cv2 as cv2
+import cv2
 import requests # request img from web
 import shutil
 
