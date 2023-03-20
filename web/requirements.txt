@@ -1,7 +1,6 @@
 Flask
 flask-restful
 flask-cors
-freesasa
 werkzeug
 requests
 git+https://github.com/huggingface/transformers
