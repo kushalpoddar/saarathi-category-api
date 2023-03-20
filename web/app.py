@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import Api, Resource, abort, reqparse
+from flask_restful import Api, Resource, request 
 from flask_cors import CORS
 from transformers import ViTModel
 from transformers.modeling_outputs import SequenceClassifierOutput
@@ -139,7 +139,9 @@ def predict(IMG_LINK,model1):
 class Protein(Resource):
 	def get(self):
 		try:
-			return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg", model1) }
+			args = request.args #retrieve args from query string
+			print(args['url'], file=sys.stdout)
+			return { "category" : predict(args['url'], model1) }
 
 		except Exception as e:
 			app.logger.info("print exception", e)
