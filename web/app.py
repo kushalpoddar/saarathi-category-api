@@ -134,8 +134,7 @@ def predict(IMG_LINK,model1):
 class Protein(Resource):
 	def get(self):
 		try:
-			return 1
-			# return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg", model1) }
+			return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg", model1) }
 
 		except Exception as e:
 			print(e)
