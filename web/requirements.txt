@@ -5,7 +5,6 @@ freesasa
 werkzeug
 requests
 git+https://github.com/huggingface/transformers
-torchvision==0.14.1
 torch==1.13.1
 numpy==1.22.4
 opencv-python==4.6.0.66
