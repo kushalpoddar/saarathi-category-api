@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_restful import Api, Resource, abort, reqparse
 from flask_cors import CORS
-import torchvision
-from torchvision.transforms import ToTensor
+# import torchvision
+# from torchvision.transforms import ToTensor
 from transformers import ViTModel
 from transformers.modeling_outputs import SequenceClassifierOutput
 import torch.nn as nn
@@ -136,7 +136,7 @@ def predict(IMG_LINK,MODEL_PATH):
 class Protein(Resource):
 	def get(self):
 		try:
-			return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg","../modele25_d2aug.pt") }
+			return { "category" : predict("https://www.thecooldown.com/wp-content/uploads/2022/11/ffb531ab-1.jpeg","./modele25_d2aug.pt") }
 
 		except Exception as e:
 			print(e)
