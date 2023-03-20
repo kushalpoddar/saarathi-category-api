@@ -96,15 +96,18 @@ model1 = torch.load("./modele25_d2aug.pt", map_location=torch.device('cpu'))
 model1.eval()  
 
 def predict(IMG_LINK,model1):
-	
-	res = requests.get(IMG_LINK, stream = True)
-	file_name="./img.png"
-	if res.status_code == 200:
-		with open(file_name,'wb') as f:
-			shutil.copyfileobj(res.raw, f)
-	# print('Image sucessfully Downloaded: ',file_name)
+	print(IMG_LINK)
+	# res = requests.get(IMG_LINK, stream = True)
+	# print(res)
+	# file_name="./img.png"
+	# print(file_name)
+	# if res.status_code == 200:
+	# 	with open(file_name,'wb') as f:
+	# 		shutil.copyfileobj(res.raw, f)
+	print('Image sucessfully Downloaded: ',file_name)
 	# else:
 	# print('Image Couldn\'t be retrieved')
+	file_name = "./Garbagehope.jpg"
 	img=cv2.imread(file_name)
 	print("file read")
 	img=cv2.resize(img, (128,128))
