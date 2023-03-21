@@ -98,9 +98,9 @@ model1 = torch.load("./modele25_d2aug.pt", map_location=torch.device('cpu'))
 model1.eval()  
 
 def predict(IMG_LINK,model1):
-	print(IMG_LINK)
+	# print(IMG_LINK)
 	res = requests.get(IMG_LINK, stream = True)
-	print(res)
+	# print(res)
 	file_name="./img.png"
 	# print(file_name)
 	if res.status_code == 200:
@@ -131,8 +131,10 @@ def predict(IMG_LINK,model1):
 	# print("{'garbage': 0, 'pothole': 1, 'sewage': 2, 'water': 3}")
 	# print(prediction)
 	predicted_class = np.argmax(prediction.cpu().detach().numpy())
-	keys=['garbage', 'pothole', 'sewage', 'water']
-	values=[0, 1, 2, 3]
+	if prediction.max() < 3:
+		return "none"
+	keys=['garbage', "nolight", 'pothole', 'sewage', 'water']
+	values=[0, 1, 2, 3, 4]
 	value_predicted = keys[values.index(predicted_class)]
 	return value_predicted
 
